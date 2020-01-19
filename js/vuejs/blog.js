@@ -1,7 +1,9 @@
 new Vue({
   el: '#app',
   data: {
+    inPageArticle: false,
     articles: {
+      currentIndex: 0,
       data: [
         {
           title: 'To shewing another demands to.',
@@ -27,7 +29,18 @@ new Vue({
     }
   },
   computed: {
+    currentArticle: function () {
+      return this.articles.data[this.articles.currentIndex]
+    }
   },
   methods: {
+    showArticle: function (i) {
+      this.articles.currentIndex = i
+      this.inPageArticle = true
+      window.scrollTo(0, 0)
+    },
+    mainLink: function () {
+      this.inPageArticle = false
+    }
   }
 })
